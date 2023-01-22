@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "357693008281",
+    "firebase_url": "https://smsapp-bbefc-default-rtdb.firebaseio.com",
+    "project_id": "smsapp-bbefc",
+    "storage_bucket": "smsapp-bbefc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357693008281:android:f5c065f2c4a5aa2d348b08",
+        "android_client_info": {
+          "package_name": "com.smsviewer.bh.sms_viewer_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357693008281-daju5ef4m2tn76qc1e2188t4sh0s080t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smsviewer.bh.sms_viewer_task",
+            "certificate_hash": "e03ed192918be72647f57aa46a94d686f7f36843"
+          }
+        },
+        {
+          "client_id": "357693008281-ivc87123aaphq0ii4l2vi1drp5rhg14m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP88KNjoDRGvbf2VS6vxEy39XBvt1tcCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357693008281-ivc87123aaphq0ii4l2vi1drp5rhg14m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
