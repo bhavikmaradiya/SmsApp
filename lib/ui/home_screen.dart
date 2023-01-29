@@ -58,7 +58,7 @@ class _BodyState extends State<Body> {
                         color: Colors.transparent,
                       ),
                       accountName: Text(
-                        "Sms viewer",
+                        "Flossinow",
                         style: TextStyle(fontSize: 18),
                       ),
                       accountEmail: null,
@@ -73,7 +73,7 @@ class _BodyState extends State<Body> {
                       Navigator.pop(context);
                     },
                   ),
-                  ListTile(
+                  /*ListTile(
                     leading: const Icon(Icons.upload),
                     horizontalTitleGap: 0,
                     title: const Text('Backup'),
@@ -214,11 +214,20 @@ class _BodyState extends State<Body> {
                             });
                       }
                     },
-                  ),
+                  ),*/
                   ListTile(
                     leading: const Icon(Icons.feedback),
                     horizontalTitleGap: 0,
                     title: const Text('Feedback'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FeedbackScreen()));
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.privacy_tip),
+                    horizontalTitleGap: 0,
+                    title: const Text('Privacy Policy'),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(context, MaterialPageRoute(builder: (context) => FeedbackScreen()));
@@ -458,15 +467,17 @@ class _BodyState extends State<Body> {
                                                     state.messagesToDisplay
                                                             .length -
                                                         1))
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10),
+                                            margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                                            color: Theme.of(context).primaryColorLight,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Flexible(
+                                                const Flexible(
                                                   flex: 1,
                                                   child: Text(
                                                     "Total of the month",
@@ -474,7 +485,7 @@ class _BodyState extends State<Body> {
                                                     textAlign: TextAlign.start,
                                                     overflow:
                                                         TextOverflow.ellipsis,
-                                                    style: const TextStyle(
+                                                    style: TextStyle(
                                                         fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500),
@@ -542,7 +553,7 @@ class _BodyState extends State<Body> {
                             Flexible(
                               flex: 1,
                               child: Text(
-                                "Total",
+                                "Total (${state.totalMonths})",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.start,

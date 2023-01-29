@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
-import 'package:sms_viewer_task/notifier/feedback_notifier.dart';
+import 'package:flossinow/notifier/feedback_notifier.dart';
 
 class FeedbackScreen extends StatelessWidget {
   const FeedbackScreen({Key? key}) : super(key: key);

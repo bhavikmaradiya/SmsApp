@@ -19,6 +19,7 @@ class HomeScreenNotifier extends ChangeNotifier {
   List<SmsModel> messagesToDisplay = [];
   List<SmsModel> originalData = [];
   bool isPermissionEnabled = false;
+  int totalMonths = 0;
 
   TextEditingController searchController = TextEditingController();
   final RefreshController refreshController =
@@ -50,7 +51,7 @@ class HomeScreenNotifier extends ChangeNotifier {
   }
 
   Future<void> uploadData(BuildContext context) async {
-    if(originalData.isNotEmpty){
+    if (originalData.isNotEmpty) {
       String udid = await FlutterUdid.udid;
       Navigator.pop(context);
       context.loaderOverlay.show();
@@ -124,6 +125,21 @@ class HomeScreenNotifier extends ChangeNotifier {
     });
   }
 
+  _fetchTotalMonths() {
+    if (messagesToDisplay.isNotEmpty) {
+      totalMonths = 0;
+      var lastDate = messagesToDisplay.last.date;
+      var firstDate = messagesToDisplay.first.date;
+      if (lastDate != null && firstDate != null) {
+       /* while (lastDate.isBefore(firstDate)) {
+          totalMonths += 1;
+        }*/
+      totalMonths = extractMonthsInRange(lastDate, firstDate).length;
+      }
+      notifyListeners();
+    }
+  }
+
   void searchText(String value) {
     if (value.trim().isNotEmpty && originalData.isNotEmpty) {
       messagesToDisplay = originalData
@@ -157,6 +173,40 @@ class HomeScreenNotifier extends ChangeNotifier {
       isFromRefresh = false;
     }
     notifyListeners();
+    _fetchTotalMonths();
+
+  }
+
+  static List<DateTime> extractMonthsInRange(DateTime from, DateTime to) {
+    //0. save day of from date
+    var daysInFromDate = from.day;
+    List<DateTime> monthsInRange = [DateTime(from.year, from.month)];
+
+    //1. get a list of months between 2 dates (without days)
+    while (from.isBefore(DateTime(to.year, to.month - 1))) {
+      var newFrom = DateTime(from.year, from.month + 1);
+      monthsInRange.add(newFrom);
+      from = newFrom;
+    }
+
+    //2. iterate months
+    return monthsInRange.map((month) {
+      var _lastDayOfMonth = lastDayOfMonth(month);
+      //2.  if the day of the from date is < then the day of the last day of the month using the daysInFromDate
+      if (daysInFromDate < _lastDayOfMonth.day) {
+        return DateTime(month.year, month.month, daysInFromDate);
+      }
+      //3.  else save the last day of the month (means that the month has less days)
+      return _lastDayOfMonth;
+    }).toList();
+  }
+
+  /// The last day of a given month
+  static DateTime lastDayOfMonth(DateTime month) {
+    var beginningNextMonth = (month.month < 12)
+        ? DateTime(month.year, month.month + 1, 1)
+        : DateTime(month.year + 1, 1, 1);
+    return beginningNextMonth.subtract(Duration(days: 1));
   }
 
   String getTotalByMonth(DateTime dateTime) {

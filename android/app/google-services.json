@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:357693008281:android:f5c065f2c4a5aa2d348b08",
         "android_client_info": {
-          "package_name": "com.smsviewer.bh.sms_viewer_task"
+          "package_name": "com.smsviewer.bh.flossinow"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "357693008281-daju5ef4m2tn76qc1e2188t4sh0s080t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.smsviewer.bh.sms_viewer_task",
+            "package_name": "com.smsviewer.bh.flossinow",
             "certificate_hash": "e03ed192918be72647f57aa46a94d686f7f36843"
           }
         },
